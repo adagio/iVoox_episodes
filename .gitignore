@@ -2,3 +2,6 @@ __pycache__
 .vscode
 storage/*
 myenv
+*.swp
+*.html
+*.swo
