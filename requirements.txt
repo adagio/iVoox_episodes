@@ -1,0 +1,5 @@
+requests>=2.20.1
+beautifulsoup4>=4.6.3
+lxml>=4.2.5
+ruamel.yaml>=0.15.78
+pandas>=0.23.4
