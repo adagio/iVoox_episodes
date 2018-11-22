@@ -7,7 +7,7 @@ program_url_id = '1454279'
 
 program = Program(program_url_id, program_url_name)
 programScraper = ProgramScraper()
-episodes = programScraper.get_episodes(program=program, max_pages=1) # use 4
+episodes = programScraper.get_episodes(program=program, max_pages=4)
 
 Storage.save_pickle(
     data=episodes,
@@ -16,5 +16,3 @@ Storage.save_pickle(
 
 saved_episodes = Storage.load_pickle('storage/wr.pkl')
 
-for episode in saved_episodes:
-    print(episode)
