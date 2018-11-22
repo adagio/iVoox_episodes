@@ -7,29 +7,39 @@ from bokeh.models import ColumnDataSource, HoverTool
 
 program_url_id = '1454279'
 
-df = pd.read_csv(f'storage/episodes-{program_url_id}.csv')
-df = df[['title','time','likes','comments']]
+df = pd.read_csv(f'storage/wr-listens.csv')
+df = df[['title','escuchas','time','likes','comments']]
 df = df.dropna() # remove rows with NaN values
 
 total = df.count()[0]
 
-df.index = abs(df.index - total)
+#df.index = abs(df.index - total)
 
-episode_index = np.linspace(1,60,60)
-episodes_cds = ColumnDataSource(df)
+#episode_index = np.linspace(1,total,total)
+
+df_sorted_by_escuchas = df[['title','escuchas','time','likes','comments']].sort_values(by='escuchas', ascending=False)
+df_sorted_by_escuchas = df_sorted_by_escuchas.reset_index(drop=True)
+
+df_executive_sorted_by_escuchas = df_sorted_by_escuchas[['title','escuchas']]
+print(df_executive_sorted_by_escuchas.head(10))
+
+df_sorted_by_escuchas = df[['title','escuchas','time','likes','comments']].sort_values(by='escuchas')
+df_sorted_by_escuchas = df_sorted_by_escuchas.reset_index(drop=True)
+
+episodes_cds = ColumnDataSource(df_sorted_by_escuchas)
 
 fig = figure(
-    title='Web Reactiva: Episodes plotted by Likes',
+    title='Web Reactiva: Episodes plotted by Escuchas',
     plot_height=400, plot_width=700,
     x_axis_label='Episodes',
     x_minor_ticks=3,
-    y_range=(0, 30),
+    y_range=(0, 1000),
     toolbar_location=None
 )
 
 fig.circle(
     x='index',
-    y='likes',
+    y='escuchas',
     source=episodes_cds,
     color='green',
     size=10,
