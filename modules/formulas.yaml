@@ -1,16 +1,20 @@
 title:
-  html_pattern: .title-wrapper a
-  content_mode: text
-  value_type: text
+    html_pattern: .title-wrapper a
+    content_mode: text
+    value_type: text
 time:
-  html_pattern: .time
-  content_mode: text
-  value_type: text
+    html_pattern: .time
+    content_mode: text
+    value_type: text
 likes:
-  html_pattern: .likes a
-  content_mode: text
-  value_type: number
+    html_pattern: .likes a
+    content_mode: text
+    value_type: number
 comments:
-  html_pattern: .comments a
-  content_mode: text
-  value_type: number
+    html_pattern: .comments a
+    content_mode: text
+    value_type: number
+url:
+    html_pattern: .title-wrapper a
+    content_mode: href_attribute
+    value_type: text

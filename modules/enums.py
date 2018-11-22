@@ -1,8 +1,9 @@
 import enum
 
 class ContentMode(enum.Enum):
-    content_attribute = 0
-    text = 1
+    text = 0
+    href_attribute = 1
+    content_attribute = 2
 
 class ValueType(enum.Enum):
     text = 0

@@ -22,9 +22,10 @@ class Scraper:
 
 
     def __get_value(self, html_tag, content_mode, value_type):
-        if ( content_mode == ContentMode.content_attribute ):
-            return html_tag.attrs['content']
-        elif ( content_mode == ContentMode.text ):
+        print(html_tag)
+        print(content_mode)
+        if ( content_mode == ContentMode.text ):
+            print('enters ContentMode.text')
             text_value = html_tag.getText().strip()
             if text_value != '':
                 if ( value_type == ValueType.number ):
@@ -33,6 +34,10 @@ class Scraper:
                     return text_value
             else:
                 return None
+        elif ( content_mode == ContentMode.content_attribute ):
+            return html_tag.attrs['content']
+        elif ( content_mode == ContentMode.href_attribute ):
+            return html_tag.attrs['href']
         else:
             return None
 
