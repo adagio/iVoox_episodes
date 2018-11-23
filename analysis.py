@@ -7,23 +7,23 @@ from bokeh.models import ColumnDataSource, HoverTool
 
 program_url_id = '1454279'
 
-df = pd.read_csv(f'storage/wr-listens.csv')
-df = df[['title','escuchas','time','likes','comments']]
-df = df.dropna() # remove rows with NaN values
+dfe = pd.read_csv(f'storage/wr-listens.csv')
+dfe = dfe[['title','escuchas','time','likes','comments']]
+dfe = dfe.dropna() # remove rows with NaN values
 
-total = df.count()[0]
+total = dfe.count()[0]
 
 #df.index = abs(df.index - total)
 
 #episode_index = np.linspace(1,total,total)
 
-df_sorted_by_escuchas = df[['title','escuchas','time','likes','comments']].sort_values(by='escuchas', ascending=False)
+df_sorted_by_escuchas = dfe[['title','escuchas','time','likes','comments']].sort_values(by='escuchas', ascending=False)
 df_sorted_by_escuchas = df_sorted_by_escuchas.reset_index(drop=True)
 
 df_executive_sorted_by_escuchas = df_sorted_by_escuchas[['title','escuchas']]
 print(df_executive_sorted_by_escuchas.head(10))
 
-df_sorted_by_escuchas = df[['title','escuchas','time','likes','comments']].sort_values(by='escuchas')
+df_sorted_by_escuchas = dfe[['title','escuchas','time','likes','comments']].sort_values(by='escuchas')
 df_sorted_by_escuchas = df_sorted_by_escuchas.reset_index(drop=True)
 
 episodes_cds = ColumnDataSource(df_sorted_by_escuchas)
@@ -48,6 +48,7 @@ fig.circle(
 
 tooltips = [
     ('Title', '@title'),
+    ('Escuchas', '@escuchas')
     ('Likes', '@likes'),
     ('Duration', '@time'),
     ('Comments', '@comments')
