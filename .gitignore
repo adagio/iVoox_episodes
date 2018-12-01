@@ -1,8 +1,13 @@
 __pycache__
-.vscode
-storage/*
+
 myenv
+
+.vscode
+
+storage/*
+
 *.swp
 *.html
 *.swo
 *.pkl
+*.csv

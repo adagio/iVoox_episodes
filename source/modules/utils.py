@@ -1,5 +1,7 @@
 import requests
 
+
+
 class Utils:
 
     def get_url_content(self, url):

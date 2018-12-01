@@ -1,0 +1,29 @@
+version: 1
+formatters:
+  simple:
+    format: '%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+  short:
+    format: '%(asctime)s [%(levelname)s] %(message)s'
+    datefmt: '%H:%M:%S'
+  process:
+    format: '%(processName)s [%(levelname)s]: %(message)s'
+    datefmt: '%H:%M:%S'
+handlers:
+  console:
+    class: logging.StreamHandler
+    level: INFO
+    stream: ext://sys.stdout
+    formatter: process
+  file:
+    class: logging.FileHandler
+    level: INFO
+    filename: logs/info.log
+    formatter: simple
+loggers:
+  infoLogger:
+    level: INFO
+    handlers: [console]
+    propagate: no
+root:
+  level: DEBUG
+  handlers: [console]
